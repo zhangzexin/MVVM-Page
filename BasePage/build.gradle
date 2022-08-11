@@ -3,8 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
 android {
     compileSdk 32
 
@@ -47,26 +47,26 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = "zzx.mvvm.basepage"
-            version = properties.getProperty("VERSION")
-            artifactId = "basePage"
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-
-    repositories {
-        maven {
-//            url uri("../repostory")
-            url uri(properties.getProperty("mavenurl"))
-            credentials {
-                username = properties.getProperty("username")
-                password = properties.getProperty("password")
-            }
-        }
-    }
-}
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = "zzx.mvvm.basepage"
+//            version = properties.getProperty("VERSION")
+//            artifactId = "basePage"
+//            afterEvaluate {
+//                from components.release
+//            }
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+////            url uri("../repostory")
+//            url uri(properties.getProperty("mavenurl"))
+//            credentials {
+//                username = properties.getProperty("username")
+//                password = properties.getProperty("password")
+//            }
+//        }
+//    }
+//}

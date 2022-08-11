@@ -55,13 +55,14 @@ abstract class BaseBVMFragment<VM: ViewModel,D: ViewDataBinding>: BaseBindingFra
     }
 
     //根据泛型创建对应的主ViewModel，ViewModel一定是全局性的
+    @Suppress("UNCHECKED_CAST")
     private fun createViewModel() {
         val parameterizedType = javaClass.genericSuperclass as? ParameterizedType
         var viewModelClass: Class<VM>? = null
         parameterizedType?.actualTypeArguments?.let {
             it.forEach { type ->
-                if (type != null) {
-                    val clazz = type as? Class<VM>
+                if (type != null && type is Class<*>) {
+                    val clazz = type as Class<VM>
                     if (ViewModel::class.javaObjectType.isAssignableFrom(clazz)) {
                         viewModelClass = clazz
                         return@forEach
@@ -107,6 +108,7 @@ abstract class BaseBVMFragment<VM: ViewModel,D: ViewDataBinding>: BaseBindingFra
                     PageStatus.error -> showError()
                     PageStatus.normal -> showContent()
                     PageStatus.empty -> showEmpty()
+                    else -> {}
                 }
             }
 

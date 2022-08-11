@@ -6,33 +6,35 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    Properties properties = new Properties()
-    properties.load(file('local.properties').newDataInputStream())
+//    Properties properties = new Properties()
+//    properties.load(file('local.properties').newDataInputStream())
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
 
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-        }
-        maven {
-            credentials {
-                username = properties.getProperty("USERNAME")
-                password = properties.getProperty("PASSWORD")
-            }
-            url = properties.getProperty("mavenurl")
-        }
-        maven {
-            credentials {
-                username = properties.getProperty("USERNAME")
-                password = properties.getProperty("PASSWORD")
-            }
-            url = properties.getProperty("mavenurl")
-        }
+//        maven {
+//            url 'https://maven.aliyun.com/repository/public'
+//        }
+//        maven {
+//            credentials {
+//                username = properties.getProperty("USERNAME")
+//                password = properties.getProperty("PASSWORD")
+//            }
+//            url = properties.getProperty("mavenurl")
+//        }
+//        maven {
+//            credentials {
+//                username = properties.getProperty("USERNAME")
+//                password = properties.getProperty("PASSWORD")
+//            }
+//            url = properties.getProperty("mavenurl")
+//        }
 
     }
 }
 rootProject.name = "My Application"
 include ':app'
 include ':BasePage'
+include ':PageList'

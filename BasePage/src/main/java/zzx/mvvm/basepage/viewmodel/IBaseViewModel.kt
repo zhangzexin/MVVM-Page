@@ -46,6 +46,8 @@ interface IBaseViewModel : LifecycleEventObserver {
         }
     }
 
+
+
     fun onDestroy()
 
     fun onStop()
